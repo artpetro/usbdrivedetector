@@ -49,7 +49,7 @@ public class WindowsStorageDeviceDetector extends AbstractStorageDeviceDetector 
 
         try {
             commandExecutor.executeCommand(windowsDetectUSBCommand);
-
+            
             String outputLine;
             while ((outputLine = commandExecutor.readOutputLine()) != null) {
 

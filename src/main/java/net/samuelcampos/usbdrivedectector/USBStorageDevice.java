@@ -29,17 +29,20 @@ public class USBStorageDevice {
 	private String deviceName;
 	
 	public USBStorageDevice(File rootDirectory, String deviceName){
-		if(rootDirectory == null || !rootDirectory.isDirectory()){
-			throw new IllegalArgumentException("Invalid root file!");
-		}
+		// this throws an exception for empty card reader on Windows (tested with Win 7 German)
+//		if(rootDirectory == null || !rootDirectory.isDirectory()){
+//			throw new IllegalArgumentException("Invalid root file: " + rootDirectory);
+//		}
 		
-		this.rootDirectory = rootDirectory;
-        
-        if(deviceName == null || deviceName.isEmpty()) {
-            deviceName = rootDirectory.getName();
-        }
-        
-        this.deviceName = deviceName;
+		if(rootDirectory != null && rootDirectory.isDirectory()){
+			this.rootDirectory = rootDirectory;
+	        
+	        if(deviceName == null || deviceName.isEmpty()) {
+	            deviceName = rootDirectory.getName();
+	        }
+	        
+	        this.deviceName = deviceName;
+		}
 	}
 
     public USBStorageDevice(File rootDirectory){

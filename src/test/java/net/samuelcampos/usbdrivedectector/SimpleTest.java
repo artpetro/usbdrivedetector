@@ -8,12 +8,13 @@ import net.samuelcampos.usbdrivedectector.events.USBStorageEvent;
  * @author samuelcampos
  */
 public class SimpleTest implements IUSBDriveListener{
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 		USBDeviceDetectorManager driveDetector = new USBDeviceDetectorManager();
 
 		for (USBStorageDevice rmDevice : driveDetector.getRemovableDevices()) {
 
 			System.out.println(rmDevice);
+			System.out.println(rmDevice.getRootDirectory());
 		}
         
         SimpleTest sTest = new SimpleTest();
