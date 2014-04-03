@@ -19,9 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.samuelcampos.usbdrivedectector.USBStorageDevice;
 import net.samuelcampos.usbdrivedectector.process.CommandLineExecutor;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -29,8 +29,8 @@ import org.apache.log4j.Logger;
  */
 public class WindowsStorageDeviceDetector extends AbstractStorageDeviceDetector {
 
-    private static final Logger logger = Logger
-            .getLogger(WindowsStorageDeviceDetector.class);
+//    private static final Logger logger = Logger
+//            .getLogger(WindowsStorageDeviceDetector.class);
 
     /**
      * wmic logicaldisk where drivetype=2 get description,deviceid,volumename
@@ -59,12 +59,12 @@ public class WindowsStorageDeviceDetector extends AbstractStorageDeviceDetector 
             }
 
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+//            logger.error(e.getMessage(), e);
         } finally {
             try {
                 commandExecutor.close();
             } catch (IOException e) {
-                logger.error(e.getMessage(), e);
+//                logger.error(e.getMessage(), e);
             }
         }
 

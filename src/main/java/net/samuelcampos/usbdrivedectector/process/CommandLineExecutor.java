@@ -19,7 +19,6 @@ import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -27,15 +26,15 @@ import org.apache.log4j.Logger;
  */
 public class CommandLineExecutor implements Closeable {
 
-    private static final Logger logger = Logger.getLogger(CommandLineExecutor.class);
+//    private static final Logger logger = Logger.getLogger(CommandLineExecutor.class);
 
     private BufferedReader input = null;
     private Process process = null;
 
     public void executeCommand(String command) throws IOException {
-        if (logger.isTraceEnabled()) {
-            logger.trace("Running command: " + command);
-        }
+//        if (logger.isTraceEnabled()) {
+//            logger.trace("Running command: " + command);
+//        }
         
         process = Runtime.getRuntime().exec(command);
 
@@ -60,7 +59,7 @@ public class CommandLineExecutor implements Closeable {
             try {
                 input.close();
             } catch (IOException e) {
-                logger.error(e.getMessage(), e);
+//                logger.error(e.getMessage(), e);
             }
         }
 

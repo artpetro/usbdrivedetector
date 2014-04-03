@@ -34,8 +34,8 @@ import org.apache.log4j.Logger;
  */
 public class USBDeviceDetectorManager {
     
-    private static final Logger logger = Logger
-            .getLogger(USBDeviceDetectorManager.class);
+//    private static final Logger logger = Logger
+//            .getLogger(USBDeviceDetectorManager.class);
 
     private static final long defaultPoolingInterval = 10 * 1000;
 
@@ -112,7 +112,7 @@ public class USBDeviceDetectorManager {
 
         @Override
         public void run() {
-            logger.trace("Pooling refresh task is running");
+//            logger.trace("Pooling refresh task is running");
             
             List<USBStorageDevice> actualConnectedDevices = AbstractStorageDeviceDetector.getInstance().getRemovableDevices();
 

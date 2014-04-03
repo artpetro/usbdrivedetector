@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import net.samuelcampos.usbdrivedectector.USBStorageDevice;
 import net.samuelcampos.usbdrivedectector.process.CommandLineExecutor;
-import org.apache.log4j.Logger;
 
 /**
  * Tested on Linux Ubuntu 13.10
@@ -31,8 +31,8 @@ import org.apache.log4j.Logger;
  */
 public class LinuxStorageDeviceDetector extends AbstractStorageDeviceDetector {
 
-    private static final Logger logger = Logger
-            .getLogger(LinuxStorageDeviceDetector.class);
+//    private static final Logger logger = Logger
+//            .getLogger(LinuxStorageDeviceDetector.class);
 
     private static final String linuxDetectUSBCommand1 = "df";
     private static final Pattern command1Pattern = Pattern.compile("^(\\/[^ ]+)[^%]+%[ ]+(.+)$");
@@ -61,12 +61,12 @@ public class LinuxStorageDeviceDetector extends AbstractStorageDeviceDetector {
                 }
             }
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+//            logger.error(e.getMessage(), e);
         } finally {
             try {
                 commandExecutor2.close();
             } catch (IOException e) {
-                logger.error(e.getMessage(), e);
+//                logger.error(e.getMessage(), e);
             }
         }
 
@@ -95,12 +95,12 @@ public class LinuxStorageDeviceDetector extends AbstractStorageDeviceDetector {
             }
 
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+//            logger.error(e.getMessage(), e);
         } finally {
             try {
                 commandExecutor1.close();
             } catch (IOException e) {
-                logger.error(e.getMessage(), e);
+//                logger.error(e.getMessage(), e);
             }
         }
 

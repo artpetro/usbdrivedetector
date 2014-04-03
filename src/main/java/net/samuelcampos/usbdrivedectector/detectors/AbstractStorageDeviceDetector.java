@@ -17,8 +17,8 @@ package net.samuelcampos.usbdrivedectector.detectors;
 
 import java.io.File;
 import java.util.List;
+
 import net.samuelcampos.usbdrivedectector.USBStorageDevice;
-import org.apache.log4j.Logger;
 
 /**
  * This class is prepared to:
@@ -31,8 +31,8 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractStorageDeviceDetector {
 
-    private static final Logger logger = Logger
-            .getLogger(AbstractStorageDeviceDetector.class);
+//    private static final Logger logger = Logger
+//            .getLogger(AbstractStorageDeviceDetector.class);
 
     private static final String OSName = System.getProperty("os.name")
             .toLowerCase();
@@ -78,9 +78,9 @@ public abstract class AbstractStorageDeviceDetector {
     protected static void addUSBDevice(List<USBStorageDevice> listDevices, String rootPath) {
         File root = new File(rootPath);
 
-        if (logger.isTraceEnabled()) {
-            logger.trace("Device found: " + root.getPath());
-        }
+//        if (logger.isTraceEnabled()) {
+//            logger.trace("Device found: " + root.getPath());
+//        }
 
         USBStorageDevice device = new USBStorageDevice(root);
         listDevices.add(device);

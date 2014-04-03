@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import net.samuelcampos.usbdrivedectector.USBStorageDevice;
 import net.samuelcampos.usbdrivedectector.process.CommandLineExecutor;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -30,8 +30,8 @@ import org.apache.log4j.Logger;
  */
 public class OSXStorageDeviceDetector extends AbstractStorageDeviceDetector {
 
-    private static final Logger logger = Logger
-            .getLogger(OSXStorageDeviceDetector.class);
+//    private static final Logger logger = Logger
+//            .getLogger(OSXStorageDeviceDetector.class);
 
     private static final String osXDetectUSBCommand = "system_profiler SPUSBDataType";
     private static final Pattern macOSXPattern = Pattern.compile("^.*Mount Point: (.+)$");
@@ -65,12 +65,12 @@ public class OSXStorageDeviceDetector extends AbstractStorageDeviceDetector {
             }
 
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+//            logger.error(e.getMessage(), e);
         } finally {
             try {
                 commandExecutor.close();
             } catch (IOException e) {
-                logger.error(e.getMessage(), e);
+//                logger.error(e.getMessage(), e);
             }
         }
 
