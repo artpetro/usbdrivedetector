@@ -23,11 +23,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import net.samuelcampos.usbdrivedectector.detectors.AbstractStorageDeviceDetector;
 import net.samuelcampos.usbdrivedectector.events.DeviceEventType;
 import net.samuelcampos.usbdrivedectector.events.IUSBDriveListener;
 import net.samuelcampos.usbdrivedectector.events.USBStorageEvent;
-import org.apache.log4j.Logger;
+
 
 /**
  * @author samuelcampos
