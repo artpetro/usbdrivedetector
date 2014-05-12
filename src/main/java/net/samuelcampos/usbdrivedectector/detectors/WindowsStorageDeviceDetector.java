@@ -54,7 +54,7 @@ public class WindowsStorageDeviceDetector extends AbstractStorageDeviceDetector 
             while ((outputLine = commandExecutor.readOutputLine()) != null) {
 
                 if (!outputLine.isEmpty() && !"DeviceID".equals(outputLine)) {
-                   // addUSBDevice(listDevices, outputLine + File.separatorChar);
+                    addUSBDevice(listDevices, outputLine + File.separatorChar);
                 }
             }
 
