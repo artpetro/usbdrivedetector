@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.filechooser.FileSystemView;
+
 import net.samuelcampos.usbdrivedectector.USBStorageDevice;
 import net.samuelcampos.usbdrivedectector.process.CommandLineExecutor;
 
@@ -29,8 +31,6 @@ import net.samuelcampos.usbdrivedectector.process.CommandLineExecutor;
  */
 public class WindowsStorageDeviceDetector extends AbstractStorageDeviceDetector {
 
-//    private static final Logger logger = Logger
-//            .getLogger(WindowsStorageDeviceDetector.class);
 
     /**
      * wmic logicaldisk where drivetype=2 get description,deviceid,volumename
@@ -54,20 +54,41 @@ public class WindowsStorageDeviceDetector extends AbstractStorageDeviceDetector 
             while ((outputLine = commandExecutor.readOutputLine()) != null) {
 
                 if (!outputLine.isEmpty() && !"DeviceID".equals(outputLine)) {
-                    addUSBDevice(listDevices, outputLine + File.separatorChar);
+                   // addUSBDevice(listDevices, outputLine + File.separatorChar);
                 }
             }
 
         } catch (IOException e) {
-//            logger.error(e.getMessage(), e);
         } finally {
             try {
                 commandExecutor.close();
-            } catch (IOException e) {
-//                logger.error(e.getMessage(), e);
-            }
+            } catch (IOException e) {}
         }
-
+        
+        if (listDevices.isEmpty()) {
+        
+	       	FileSystemView fsView = FileSystemView.getFileSystemView(); 
+	        	
+	        File[] roots = File.listRoots();
+	        
+	        String fileSystemDesc = "Wechseldatenträger";
+	  
+	        for (File root : roots) {
+	              if (root.canRead() && root.canWrite() && fsView.isDrive(root)
+	                      && !fsView.isFloppyDrive(root)) {
+	  
+	                  if (fileSystemDesc.equalsIgnoreCase(fsView.getSystemTypeDescription(root))) {
+	                	  
+	                      USBStorageDevice device = new USBStorageDevice(root, fsView.getSystemDisplayName(root));
+	                      listDevices.add(device);
+	                      
+	                  }
+	              }
+	          }
+	        	
+	        	
+        }
+        
         return listDevices;
     }
 
